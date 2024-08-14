@@ -30,7 +30,7 @@
 
 ::-webkit-scrollbar-thumb {
     width: .2em;
-    background: rgb(51, 5, 255);
+    background: var(--secondary-color);
     border-radius: .1em;
     transition: .15s;
 }
