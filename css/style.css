@@ -1,0 +1,380 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-color: #000;
+    --main-color: #146C94;
+    --secondary-color: #19A7CE;
+    /* --bg-color: #201E43;
+    --main-color: #134B70;
+    --secondary-color: #508C9B; */
+    --white-color: #EEEEEE;
+    --gift-card-background-color: #001a30;
+    --button-inner-color: var(--wave-color);
+    --wave-color: #020202;
+    --progress-color: #89c9ff;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: .1em;
+    background: #f8f8f8;
+
+}
+
+::-webkit-scrollbar-thumb {
+    width: .2em;
+    background: rgb(51, 5, 255);
+    border-radius: .1em;
+    transition: .15s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #44abff;
+}
+
+body {
+    font-family: 'Happy Monkey';
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+    background-color: var(--bg-color);
+    color: white;
+    padding: 1em;
+}
+
+.d-none {
+    opacity: 0 !important;
+    pointer-events: none;
+}
+
+.gift-card {
+    display: flex;
+    transition: opacity 4s;
+    inset: 0;
+    flex-direction: column;
+    max-width: 600px;
+    margin: auto;
+    position: fixed;
+    background-color: var(--secondary-color);
+    padding: .75em;
+    padding-bottom: 1.2em;
+    height: fit-content;
+    z-index: 4;
+    border: 1px solid #0065bb;
+    margin-block: .75vh;
+    overflow: hidden;
+    border-radius: 2em;
+    box-shadow: 0px 0px 50px 0px #ffffff;
+}
+
+.gift-card__body {
+    position: relative;
+    padding: .5em;
+    overflow-y: auto;
+}
+
+.gift-card__title {
+    margin-top: .5em;
+    text-align: center;
+}
+
+.gift-card__imgs {
+    height: 367px;
+    position: relative;
+    margin-block: 1.5em;
+    /* mix-blend-mode: luminosity; */
+    display: grid;
+    place-items: center;
+}
+
+.gift-card__img {
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+}
+
+
+.gift-card__imgs__current-lyric {
+    font-weight: bold;
+    background-color: black;
+}
+
+.gift-card__img:nth-of-type(1) {
+    animation: image-fade1 30s infinite linear;
+}
+
+.gift-card__img:nth-of-type(2) {
+    animation: image-fade2 30s infinite linear;
+}
+
+.gift-card__img:nth-of-type(3) {
+    animation: image-fade3 30s infinite linear;
+}
+
+.gift-card__description--lyrics {
+    white-space: preserve-breaks;
+}
+
+.gift-card__description--italic {
+    font-style: italic;
+}
+
+.gift-card__audio-container {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    margin-block: .5em;
+    overflow-y: auto;
+}
+
+.gift-card__audio-container__play-button {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: .2s;
+    background-color: var(--progress-color);
+}
+
+.gift-card__audio-container__play-button:hover {
+    background-color: #5fb7ff;
+}
+
+.gift-card__audio-container__play-button::after,
+.gift-card__audio-container__play-button::before {
+    content: "";
+    position: absolute;
+}
+
+.gift-card__audio-container__play-button--paused::after {
+    inset: 50%;
+    left: calc(25% + 5px);
+    top: 25%;
+    border: 10px solid transparent;
+    border-left-color: var(--button-inner-color);
+}
+
+.gift-card__audio-container__play-button--playing::after {
+    left: 30%;
+}
+
+.gift-card__audio-container__play-button--playing::after,
+.gift-card__audio-container__play-button--playing::before {
+    width: 15%;
+    height: 50%;
+    background-color: var(--button-inner-color);
+    right: 30%;
+    top: 25%;
+    border-radius: 4px;
+}
+
+.gift-card__audio-container__waves-container {
+    width: 100%;
+}
+
+.gift-card__footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dialog[open] {
+    display: grid;
+    /* position: relative; */
+    min-width: 300px;
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    place-items: center;
+    border: none;
+    background-color: white;
+    overflow-y: none;
+    border-radius: 2em;
+}
+
+.dialog__title {
+    margin-top: .25em;
+}
+
+.dialog__body {
+    height: 80%;
+    overflow-y: auto;
+}
+
+.dialog--lyrics__body {
+    padding: 2em
+}
+
+.dialog--playlist__body {
+    width: 100%;
+}
+
+.dialog--playlist__body__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    row-gap: .15em;
+}
+
+.dialog--playlist__list__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: .1em;
+    padding: 1em;
+}
+
+.dialog--playlist__list__item:nth-child(odd) {
+    background-color: #c5f2ffeb;
+}
+
+/* .dialog--playlist__list__item:nth-child(even) {
+    background-color: white;
+} */
+
+.dialog__close-cross {
+    cursor: pointer;
+    position: absolute;
+    right: .5em;
+    font-size: 2rem;
+    font-weight: bold;
+    top: 0;
+    transition: .2s;
+}
+
+.dialog__close-cross:hover {
+    color: var(--secondary-color);
+}
+
+.happy-birthday {
+    position: absolute;
+    margin-top: 30vh;
+    width: 100%;
+    text-align: center;
+    font-size: 333%;
+    font-family: sans-serif;
+    color: grey;
+    pointer-events: none;
+    z-index: 2;
+}
+
+.click-the-gift {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 4rem;
+    animation: flash .5s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+.box {
+    display: grid;
+    place-items: center;
+    height: calc(100vh - 1em);
+}
+
+.box-body {
+    margin-top: 0;
+    margin-inline: auto;
+}
+
+.box:has(.box-body.opened) {
+    opacity: 0;
+    transition: opacity 7s;
+}
+
+@keyframes image-fade1 {
+    0% {
+        opacity: 1;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    33% {
+        opacity: 0;
+    }
+
+    99% {
+        opacity: 0;
+    }
+}
+
+@keyframes image-fade2 {
+    0% {
+        opacity: 0;
+    }
+
+    30% {
+        opacity: 0;
+    }
+
+    33% {
+        opacity: 1;
+    }
+
+    63% {
+        opacity: 1;
+    }
+
+    66% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes image-fade3 {
+    0% {
+        opacity: 0;
+    }
+
+    63% {
+        opacity: 0;
+    }
+
+    66% {
+        opacity: 1;
+    }
+
+    96% {
+        opacity: 1;
+    }
+
+    99% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes flash {
+    100% {
+        opacity: 0;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .gift-card {
+        max-width: 312px;
+    }
+}

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Happy+Monkey&family=Kanit:wght@400;700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Oswald:wght@200..700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="css/gift-box.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/particles.css">
+    <title>Happy birthday</title>
+</head>
+
+<body>
+
+
+
+    <h1 class="happy-birthday">Happy Birthday Imane!</h1>
+    <canvas id="canvas"></canvas>
+
+    <audio data-audio-background>
+        <source src="assets/audios/effects/happy-birthday-in-english-male.mp3">
+    </audio data-audio-background>
+    <!-- <audio data-audio-background>
+        <source src="assets/audios/effects/happy-birthday-to-you-made-by-me.mp3">
+    </audio>
+    <audio data-audio-background>
+        <source src="assets/audios/effects/happy-birthday-voiced.mp3">
+    </audio>
+    <audio data-audio-background>
+        <source src="assets/audios/effects/happy-birthday.mp3">
+    </audio> -->
+
+    <div class="box">
+        <div class="box-body" data-box-body>
+            <img class="img" src="assets/images/whatsapp-tof.jpg" width="150">
+            <div class="box-lid">
+
+                <div class="box-bowtie"></div>
+
+            </div>
+        </div>
+    </div>
+
+    <p class="click-the-gift d-none" data-click-the-gift>Click the gift</p>
+
+
+
+    <div class="gift-card d-none" data-gift-card>
+        <div class="gift-card__body">
+            <h1 class="gift-card__title">Imane is turning 21 years old !!!</h1>
+            <div class="gift-card__imgs">
+                <img class="gift-card__img" src="assets/images/whatsapp-tof.jpg" />
+                <img class="gift-card__img" src="assets/images/fb-tof.jpg" />
+                <img class="gift-card__img" src="assets/images/linkedin-tof.jpg" />
+                <p data-current-lyric class="gift-card__imgs__current-lyric"></p>
+            </div>
+            <div class="gift-card__audio-container">
+                <div id="waves-container" class="gift-card__audio-container__waves-container"></div>
+                <button data-play-audio-btn
+                    class="gift-card__audio-container__play-button--paused gift-card__audio-container__play-button"></button>
+            </div>
+            <div class="gift-card__footer">
+                <a class="gift-card__footer__btn" href="#" data-full-lyrics-btn>Full lyrics</a>
+                <a class="gift-card__footer__btn" href="#" data-playlist-btn>Playlist</a>
+            </div>
+        </div>
+    </div>
+    <dialog class="dialog dialog--lyrics" data-full-lyrics-dialog>
+        <span class="dialog__close-cross" data-dialog-close-cross>&times;</span>
+        <h2 class="dialog__title">Lyrics</h2>
+        <div class="dialog__body dialog--lyrics__body">
+            <p class="gift-card__description gift-card__description--lyrics">
+                <span class="gift-card__description--italic">[Intro]</span>
+                Imane’s 21, it’s a brand new day,
+                Let’s celebrate her in every way!
+
+                <span class="gift-card__description--italic">[Verse 1]</span>
+                She’s got a big heart, so full of love,
+                Always helping others, like a gift from above.
+                Loves her family, especially her mom,
+                With Imane around, everything’s calm.
+
+                <span class="gift-card__description--italic">[Chorus]</span>
+                21 now, she’s shining so bright,
+                Imane’s the star, lighting up the night.
+                Brave and strong, she knows what’s true,
+                Today’s all about you, Imane, we love you!
+
+                <span class="gift-card__description--italic">[Verse 2]</span>
+                She’s great at explaining, makes it all clear,
+                Remembers everything, she’s got no fear.
+                Loves her series, but she likes to go,
+                In a quiet room, she’ll make it flow.
+
+                <span class="gift-card__description--italic">[Chorus]</span>
+                21 now, she’s shining so bright,
+                Imane’s the star, lighting up the night.
+                Brave and strong, she knows what’s true,
+                Today’s all about you, Imane, we love you!
+
+                <span class="gift-card__description--italic">[Bridge]</span>
+                She’s a bit scared of the dentist’s chair,
+                But when it’s time to sleep, she’s without a care.
+                Energetic, fun, always on the go,
+                Imane, you’re the one we all know!
+
+                <span class="gift-card__description--italic">[Outro]</span>
+                Happy 21st, let’s make some noise,
+                Imane, you bring us all so much joy.
+                This day is yours, so let’s sing it loud,
+                Imane, you make us all so proud!
+
+                <span class="gift-card__description--italic">[End]</span>
+            </p>
+        </div>
+    </dialog>
+
+    <dialog class="dialog dialog--playlist" data-playlist-dialog>
+        <span class="dialog__close-cross" data-dialog-close-cross>&times;</span>
+        <h2 class="dialog__title">Playlist</h2>
+        <div class="dialog__body dialog--playlist__body">
+            <ul class="dialog--playlist__body__list">
+                <li class="dialog--playlist__list__item">
+                    <p>RAP Version 1</p>
+                    <audio controls>
+                        <source src="assets/audios/RAPv1.mp3">
+                    </audio>
+                </li>
+                <li class="dialog--playlist__list__item">
+                    <p>RAP Version 2</p>
+                    <audio controls>
+                        <source src="assets/audios/RAPv2.mp3">
+                    </audio>
+                </li>
+                <li class="dialog--playlist__list__item">
+                    <p>Upbeat pop tune Version 1</p>
+                    <audio controls>
+                        <source src="assets/audios/Upbeat pop tune v1.mp3">
+                    </audio>
+                </li>
+                <li class="dialog--playlist__list__item">
+                    <p>Upbeat pop tune Version 2</p>
+                    <audio controls>
+                        <source src="assets/audios/Upbeat pop tune v2.mp3">
+                    </audio>
+                </li>
+                <li class="dialog--playlist__list__item">
+                    <p>RAP version 3</p>
+                    <audio controls>
+                        <source src="assets/audios/RAPv3.mp3">
+                    </audio>
+                </li>
+                <li class="dialog--playlist__list__item">
+                    <p>RAP version 4</p>
+                    <audio controls>
+                        <source src="assets/audios/RAPv4.mp3">
+                    </audio>
+                </li>
+                <li class="dialog--playlist__list__item">
+                    <p>POP version 1</p>
+                    <audio controls>
+                        <source src="assets/audios/POPv1.mp3">
+                    </audio>
+                </li>
+                <li class="dialog--playlist__list__item">
+                    <p>POP version 2</p>
+                    <audio controls>
+                        <source src="assets/audios/POPv2.mp3">
+                    </audio>
+                </li>
+            </ul>
+        </div>
+    </dialog>
+</body>
+
+<script src="js/particles.js"></script>
+<script type="module" src="js/script.js" defer></script>
+<script type="module">
+
+</script>
+
+</html>
