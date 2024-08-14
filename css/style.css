@@ -123,6 +123,7 @@ body {
 
 .gift-card__description--lyrics {
     white-space: preserve-breaks;
+    white-space: pre-line;
 }
 
 .gift-card__description--italic {
