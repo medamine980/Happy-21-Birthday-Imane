@@ -62,10 +62,15 @@
                 <p data-current-lyric class="gift-card__imgs__current-lyric"></p>
             </div>
             <div class="gift-card__audio-container">
-                <div id="waves-container" class="gift-card__audio-container__waves-container"></div>
+                <div class="gift-card__audio-container__wavesurfer-timer">
+                    <span class="gift-card__audio-container__wavesurfer-timer__timer" data-played-time>0</span>
+                    <div id="waves-container" class="gift-card__audio-container__waves-container"></div>
+                    <span class="gift-card__audio-container__wavesurfer-timer__timer" data-duration-time>3</span>
+                </div>
                 <button data-play-audio-btn
                     class="gift-card__audio-container__play-button--paused gift-card__audio-container__play-button"></button>
             </div>
+
             <div class="gift-card__footer">
                 <a class="gift-card__footer__btn" href="#" data-full-lyrics-btn>Full lyrics</a>
                 <a class="gift-card__footer__btn" href="#" data-playlist-btn>Playlist</a>

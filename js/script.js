@@ -26,7 +26,10 @@ const clickTheGiftElement = document.querySelector("[data-click-the-gift]");
 
 const fullLyricsDialog = document.querySelector("[data-full-lyrics-dialog]");
 const playlistDialog = document.querySelector("[data-playlist-dialog]");
-const dialogCloseCrosses = document.querySelectorAll("[data-dialog-close-cross]")
+const dialogCloseCrosses = document.querySelectorAll("[data-dialog-close-cross]");
+
+const playedTimeElement = document.querySelector("[data-played-time]");
+const maxPlayTimeElement = document.querySelector("[data-duration-time]");
 
 
 
@@ -38,6 +41,7 @@ window.addEventListener('click', e => {
 
     audioBackground.addEventListener("ended", e => {
         if (i === 0) {
+            setTimer();
             boxBody.addEventListener('click', e => {
                 clickTheGiftElement.remove();
                 changeBackgroundAudioSrc('assets/audios/effects/trumpet.m4a');
@@ -72,6 +76,7 @@ async function playAllAudios() {
 }
 
 playButton?.addEventListener('click', e => {
+
     if (wavesurfer.isPlaying()) {
         wavesurfer.pause();
         playButton.classList.add(CLASSES.buttonPaused);
@@ -85,9 +90,20 @@ playButton?.addEventListener('click', e => {
 
 });
 
+function changePlayButtonUI() {
+    if (!wavesurfer.isPlaying()) {
+        playButton.classList.add(CLASSES.buttonPaused);
+        playButton.classList.remove(CLASSES.buttonPlaying);
+    }
+    else {
+        playButton.classList.add(CLASSES.buttonPlaying);
+        playButton.classList.remove(CLASSES.buttonPaused);
+    }
+}
 
 
 wavesurfer.on('timeupdate', time => {
+    setTimer();
     const lyricIndex = syncLyrics(time);
     if (lyricIndex == null) return currentLyric.textContent = "";
     currentLyric.textContent = lyrics[lyricIndex].text;
@@ -154,4 +170,14 @@ function stopAllAudios() {
     wavesurfer.pause();
     playButton.classList.add(CLASSES.buttonPaused);
     playButton.classList.remove(CLASSES.buttonPlaying);
+}
+
+function setTimer() {
+    const currentTimeMinutes = Math.floor(wavesurfer.getCurrentTime() / 60);
+    const currentTimeSeconds = Math.floor(wavesurfer.getCurrentTime() % 60).toString().padStart(2, '0');
+    const durationTimeMinutes = Math.floor(wavesurfer.getDuration() / 60);
+    const durationTimeSeconds = Math.floor(wavesurfer.getDuration() % 60).toString().padStart(2, '0');
+    playedTimeElement.textContent = `${currentTimeMinutes}:${currentTimeSeconds}`;
+    maxPlayTimeElement.textContent = `${durationTimeMinutes}:${durationTimeSeconds}`;
+    changePlayButtonUI();
 }

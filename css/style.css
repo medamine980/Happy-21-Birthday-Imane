@@ -52,6 +52,7 @@ body {
 .d-none {
     opacity: 0 !important;
     pointer-events: none;
+    position: fixed !important;
 }
 
 .gift-card {
@@ -61,7 +62,7 @@ body {
     flex-direction: column;
     max-width: 600px;
     margin: auto;
-    position: fixed;
+    position: absolute;
     background-color: var(--secondary-color);
     padding: .75em;
     padding-bottom: 1.2em;
@@ -107,6 +108,7 @@ body {
 .gift-card__imgs__current-lyric {
     font-weight: bold;
     background-color: black;
+    align-items: center;
 }
 
 .gift-card__img:nth-of-type(1) {
@@ -180,6 +182,20 @@ body {
     right: 30%;
     top: 25%;
     border-radius: 4px;
+}
+
+.gift-card__audio-container__wavesurfer-timer {
+    display: flex;
+    width: 100%;
+    gap: 1em;
+}
+
+.gift-card__audio-container__wavesurfer-timer__timer {
+    position: absolute;
+}
+
+.gift-card__audio-container__wavesurfer-timer__timer:nth-of-type(2) {
+    right: 0;
 }
 
 .gift-card__audio-container__waves-container {
